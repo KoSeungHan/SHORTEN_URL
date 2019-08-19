@@ -56,6 +56,10 @@
           </li>
         </ul>
       </div>
-<P>  The time on the server is ${serverTime}. </P>
+	  <pre>
+	1. 변환하고자 하는 URL 입력
+	2. <b>[URL단축]</b> 버튼 클릭시 우측에 단축 URL 생성
+	3. <b>[이동하기]</b> 버튼 클릭시 단축URL호출하여 본래 URL로 이동  
+	  </pre>
 </body>
 </html>

@@ -25,18 +25,12 @@ public class ShortenUtil {
 	
 	public static String shortenUrlFileDrive = "C:/";
 	public static String shortenUrlFileName = "Temp/ShortenUrlList.txt";
-	
-	// storage for generated keys
-	private HashMap<String, String> keyMap; // key-url map
-	private HashMap<String, String> valueMap;// url-key map to quickly check
-												// whether an url is
-	// already entered in our system
-	private String domain; // Use this attribute to generate urls for a custom
-							// domain name defaults to http://fkt.in
-	private char myChars[]; // This array is used for character to number
-							// mapping
-	private Random myRand; // Random object used to generate random integers
-	private int keyLength; // the key length in URL defaults to 8
+	private HashMap<String, String> keyMap; 
+	private HashMap<String, String> valueMap;
+	private String domain; 
+	private char myChars[]; 
+	private Random myRand;
+	private int keyLength;
 
 	// Default Constructor
 	public ShortenUtil() {
@@ -62,8 +56,11 @@ public class ShortenUtil {
 		domain = "http://localhost";
 	}
 
-	// Constructor which enables you to define tiny URL key length and base URL
-	// name
+	/**
+	 * ID길이와 서버주소를 받는 생성자
+	 * @param length
+	 * @param newDomain
+	 */
 	public ShortenUtil(int length, String newDomain) {
 		this();
 		this.keyLength = length-1;
@@ -74,7 +71,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * URL�쑀�슚�꽦 泥댄겕�썑 �떒異뷫RL 由ы꽩
+	 * 원래의 URL로 부터 단축 URL을 리턴한다.
 	 * @param longURL
 	 * @return
 	 */
@@ -93,20 +90,9 @@ public class ShortenUtil {
 		return shortURL;
 	}
 
-	/**
-	 * �뀒�뒪�듃瑜� �쐞�븳 硫붿꽌�뱶
-	 * @param shortURL
-	 * @return
-	 */
-	public String expandURL(String shortURL) {
-		String longURL = "";
-		String key = shortURL.substring(domain.length() + 1);
-		longURL = keyMap.get(key);
-		return longURL;
-	}
 
 	/**
-	 * URL �쑀�슚�꽦 泥댄겕
+	 * URL 의 유효여부 체크한다.
 	 * @param url
 	 * @return
 	 */
@@ -133,7 +119,7 @@ public class ShortenUtil {
 
 
 	/**
-	 * http, https �벑�쓽 �궡�슜�씠 �젣嫄곕맂 URL由ы꽩
+	 * http, https 를 제외한 유효한 URL을 가져온다.
 	 * @param url
 	 * @return
 	 */
@@ -149,9 +135,7 @@ public class ShortenUtil {
 		return url;
 	}
 
-	/*
-	 * Get Key method
-	 */
+	//
 	private String getKey(String longURL) {
 		String key;
 		key = generateKey();
@@ -160,7 +144,7 @@ public class ShortenUtil {
 		return key;
 	}
 
-	// generateKey
+	// 랜덤문자생성
 	private String generateKey() {
 		String key = "";
 		boolean flag = true;
@@ -178,7 +162,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * �엯�젰�맂 URL�쓣 �넻�빐�꽌 湲곕벑濡앸맂 URL�씠 �엳�쑝硫� 由ы꽩
+	 * 입력된 URL이 기존재하는 주소이면 해당URL에 대한 단축URL을 리턴한다.
 	 * @param urlText
 	 * @return
 	 */
@@ -206,7 +190,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * �떒異뷫RL(ID媛�)�쓣 �넻�빐�꽌 湲곕벑濡앸맂 URL�씠 �엳�쑝硫� 由ы꽩
+	 * ID를 기준으로 원래의 URL을 리턴한다.
 	 * @param id
 	 * @return
 	 */
@@ -234,7 +218,7 @@ public class ShortenUtil {
 	}
 	
 	
-	//�뀒�뒪�듃
+	//테스트용
 	public static void main(String args[]) {
 		//System.out.println(existShortenUrl("www.google.com"));
 		ShortenUtil u = new ShortenUtil(8, "localhost/");
