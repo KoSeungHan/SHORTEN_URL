@@ -29,8 +29,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.shorten.util.ShortenUtil;
 
-import sun.net.util.URLUtil;
-
 /**
  * Handles requests for the application home page.
  */
@@ -86,18 +84,18 @@ public class ShortenController {
 		ShortenUtil u = new ShortenUtil(8, request.getContextPath());
 		String returnShortenUrl = u.existShortenUrl(urlText);
 
-		// 1.이미 존재하는 URL정보이면 기존의 URL 정보를 리턴
+		// 1.�씠誘� 議댁옱�븯�뒗 URL�젙蹂댁씠硫� 湲곗〈�쓽 URL �젙蹂대�� 由ы꽩
 		if(returnShortenUrl != null) {
 			return returnShortenUrl;
 		}
 		 
-		// 2. 유효하지 않은 URL인 경우 ALERT 처리 한다.
+		// 2. �쑀�슚�븯吏� �븡�� URL�씤 寃쎌슦 ALERT 泥섎━ �븳�떎.
 		urlValid = u.validateUrlCheck(urlText);
 		if(!urlValid) {
 			return "-1";
 		}
 		
-		// 3. 새로운 URL 인경우 원래URL과 단축URL을 파일시스템에 등록한다.
+		// 3. �깉濡쒖슫 URL �씤寃쎌슦 �썝�옒URL怨� �떒異뷫RL�쓣 �뙆�씪�떆�뒪�뀥�뿉 �벑濡앺븳�떎.
 		if(returnShortenUrl == null) {
 			returnShortenUrl = u.shortenURL(urlText);
 			logger.info(urlText + " -> " + returnShortenUrl);

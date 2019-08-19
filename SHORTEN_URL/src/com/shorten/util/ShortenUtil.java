@@ -24,7 +24,7 @@ public class ShortenUtil {
 	Logger logger = LoggerFactory.getLogger(ShortenUtil.class);
 	
 	public static String shortenUrlFileDrive = "C:/";
-	public static String shortenUrlFileName = "ShortenUrlList.txt";
+	public static String shortenUrlFileName = "Temp/ShortenUrlList.txt";
 	
 	// storage for generated keys
 	private HashMap<String, String> keyMap; // key-url map
@@ -74,7 +74,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * URL유효성 체크후 단축URL 리턴
+	 * URL�쑀�슚�꽦 泥댄겕�썑 �떒異뷫RL 由ы꽩
 	 * @param longURL
 	 * @return
 	 */
@@ -94,7 +94,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * 테스트를 위한 메서드
+	 * �뀒�뒪�듃瑜� �쐞�븳 硫붿꽌�뱶
 	 * @param shortURL
 	 * @return
 	 */
@@ -106,7 +106,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * URL 유효성 체크
+	 * URL �쑀�슚�꽦 泥댄겕
 	 * @param url
 	 * @return
 	 */
@@ -133,7 +133,7 @@ public class ShortenUtil {
 
 
 	/**
-	 * http, https 등의 내용이 제거된 URL리턴
+	 * http, https �벑�쓽 �궡�슜�씠 �젣嫄곕맂 URL由ы꽩
 	 * @param url
 	 * @return
 	 */
@@ -178,7 +178,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * 입력된 URL을 통해서 기등록된 URL이 있으면 리턴
+	 * �엯�젰�맂 URL�쓣 �넻�빐�꽌 湲곕벑濡앸맂 URL�씠 �엳�쑝硫� 由ы꽩
 	 * @param urlText
 	 * @return
 	 */
@@ -206,7 +206,7 @@ public class ShortenUtil {
 	}
 
 	/**
-	 * 단축URL(ID값)을 통해서 기등록된 URL이 있으면 리턴
+	 * �떒異뷫RL(ID媛�)�쓣 �넻�빐�꽌 湲곕벑濡앸맂 URL�씠 �엳�쑝硫� 由ы꽩
 	 * @param id
 	 * @return
 	 */
@@ -234,7 +234,7 @@ public class ShortenUtil {
 	}
 	
 	
-	//테스트
+	//�뀒�뒪�듃
 	public static void main(String args[]) {
 		//System.out.println(existShortenUrl("www.google.com"));
 		ShortenUtil u = new ShortenUtil(8, "localhost/");
