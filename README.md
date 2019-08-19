@@ -20,7 +20,7 @@
 ## 4. 빌드방법
  1) Git Repositoris에 등록
     Eclipse에서 Git repository에서 Clone a Git Repository 선택후 URI에 하기의 주소등록
-    \`URI : https://github.com/KoSeungHan/SHORTEN_URL.git\`
+    ※ URI : https://github.com/KoSeungHan/SHORTEN_URL.git
  2) Project Import
      Directory등록후(ex: C:\project\git\shorten_url) 생성된 Repository에서 WorkingTree의 SHORTEN_URL을 Import project    
  3) 빌드확인
@@ -28,7 +28,8 @@
  4) 서버설정
      Eclipse의 Servers에서 Apache > Tomcat9.0 으로 생성 후 SHORTEN_URL을 ADD하고 Finish 설치 후 포트변경 (80) , Modules에서 Path를 "/" 으로 Edit
  5) 기타
-     DB에서가 아닌 Filesystem으로 데이타를 저장하과 확인하는 구조이므로 **File저장위치에대한 읽기/쓰기 권한이 있는지 반드시 설정**해 주어야 합니다. ※ File생성 위치 (C:/Temp/ShortenUrlList.txt)
+     DB에서가 아닌 Filesystem으로 데이타를 저장하과 확인하는 구조이므로 **File저장위치에대한 읽기/쓰기 권한이 있는지 반드시 설정**해 주어야 합니다. 
+     ※ File생성 위치 (C:/Temp/ShortenUrlList.txt)
 
 ## 5. 실행방법
  1) 주소창에서 http://localhost 호출
@@ -37,7 +38,7 @@
 
 ## 6. JUnit 테스트
  1) 테스트 클래스 위치
-    \`est/shorten/util/ShortenUtilTest.java\`
+     test/shorten/util/ShortenUtilTest.java
  2) 테스트 내용
      단축URL생성여부
      동일URL등록시 동일한 단축URL 처리여부
