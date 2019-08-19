@@ -1,0 +1,73 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:query="http://www.anyframejava.org/schema/query"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean name="queryService" class="org.anyframe.query.impl.QueryServiceImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="sqlRepository" ref="sqlLoader"/>
+        <property name="pagingSQLGenerator" ref="pagingSQLGenerator"/>
+        
+        <!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 시작 -->
+        <property name="lobHandler" ref="lobHandler"/>
+        <!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 끝 -->
+    </bean>
+
+    <bean name="proQueryService" class="org.anyframe.query.impl.QueryServiceImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate2"/>
+        <property name="sqlRepository" ref="sqlLoader"/>
+        <property name="pagingSQLGenerator" ref="pagingSQLGenerator"/>
+        
+        <!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 시작 -->
+        <property name="lobHandler" ref="lobHandler"/>
+        <!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 끝 -->
+    </bean>
+
+
+    <bean name="recQueryService" class="org.anyframe.query.impl.QueryServiceImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate3"/>
+        <property name="sqlRepository" ref="sqlLoader"/>
+        <property name="pagingSQLGenerator" ref="pagingSQLGenerator"/>
+        
+        <!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 시작 -->
+        <property name="lobHandler" ref="lobHandler"/>
+        <!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 끝 -->
+    </bean>
+
+
+<bean name="sqlLoader" class="org.anyframe.query.impl.config.loader.MappingXMLLoader">
+    <property name="mappingFiles">
+        <value>classpath*:/com/hr/**/*-mapping-query.xml</value>
+    </property>
+    <property name="nullchecks">
+        <map>
+            <!-- key: type, value: default-value -->
+            <entry key="VARCHAR" value=""/>
+        </map>
+    </property>
+    <property name="dynamicReload" value="5000"/>
+    <property name="skipError" value="true" />
+</bean>
+
+<bean id="pagingSQLGenerator"
+    class="org.anyframe.query.impl.jdbc.generator.OraclePagingSQLGenerator"/>
+
+<bean id="jdbcTemplate" class="org.anyframe.query.impl.jdbc.PagingJdbcTemplate">
+    <property name="dataSource" ref="phrDataSource" />
+</bean>
+<bean id="jdbcTemplate2" class="org.anyframe.query.impl.jdbc.PagingJdbcTemplate">
+    <property name="dataSource" ref="proDataSource" />
+</bean>
+<bean id="jdbcTemplate3" class="org.anyframe.query.impl.jdbc.PagingJdbcTemplate">
+    <property name="dataSource" ref="recDataSource" />
+</bean>
+
+
+<!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 시작 -->
+<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" lazy-init="true"/>
+
+<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" lazy-init="true">
+    <property name="nativeJdbcExtractor" ref="nativeJdbcExtractor"/>
+</bean>
+<!-- 2016-08-23 LOB 컬럼 처리를 위한 추가 끝 -->
+</beans>
