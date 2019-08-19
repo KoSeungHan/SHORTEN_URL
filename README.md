@@ -1,5 +1,5 @@
 # URL단축 프로젝트
-
+---
 ## 1. 프로젝트 소개
  1) 웹으로 부터 입력받은 Full Url을 해당 웹서비스의 단축서버의 URL로 생성
  2) 단축URL은 단축서버 주소뒤에 8자의 대소문자로 발생시킴
@@ -19,8 +19,8 @@
 
 ## 4. 빌드방법
  1) Git Repositoris에 등록
-    Eclipse에서 Git repository에서 Clone a Git Repository 선택후 URI에 하기의 주소등록 
-    URI : https://github.com/KoSeungHan/SHORTEN_URL.git
+    Eclipse에서 Git repository에서 Clone a Git Repository 선택후 URI에 하기의 주소등록
+    \`URI : https://github.com/KoSeungHan/SHORTEN_URL.git\`
  2) Project Import
      Directory등록후(ex: C:\project\git\shorten_url) 생성된 Repository에서 WorkingTree의 SHORTEN_URL을 Import project    
  3) 빌드확인
@@ -37,7 +37,7 @@
 
 ## 6. JUnit 테스트
  1) 테스트 클래스 위치
-    test/shorten/util/ShortenUtilTest.java
+    \`est/shorten/util/ShortenUtilTest.java\`
  2) 테스트 내용
      단축URL생성여부
      동일URL등록시 동일한 단축URL 처리여부
