@@ -19,7 +19,8 @@
 
 ## 4. 빌드방법
  1) Git Repositoris에 등록
-    Eclipse에서 Git repository에서 Clone a Git Repository 선택후 URI에 하기의 주소등록 URI : https://github.com/KoSeungHan/SHORTEN_URL.git
+    Eclipse에서 Git repository에서 Clone a Git Repository 선택후 URI에 하기의 주소등록 
+    URI : https://github.com/KoSeungHan/SHORTEN_URL.git
  2) Project Import
      Directory등록후(ex: C:\project\git\shorten_url) 생성된 Repository에서 WorkingTree의 SHORTEN_URL을 Import project    
  3) 빌드확인
