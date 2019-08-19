@@ -5,9 +5,6 @@
 <script type="text/javascript">
 
 	function urlShorten() {
-		//alert(document.getElementById("urlText").value);
-		alert($("#urlText").val());
-		//ajaxCall("${ctx}/urlShorten", "", false);
 		var urlText = $("#urlText").val();
 		
 		//var result = ajaxCall("/urlShorten","urlText="+urlText,false);
@@ -21,7 +18,11 @@
 				success: function(rv) {
 					if(rv == "-1") {
 						alert("유효하지 않은 URL 입니다.");
+						$("#urlResult").html("");
+						$("#sendRedirect").hide();
 						return;
+					} else {
+						$("#sendRedirect").show();
 					}
 					$("#urlResult").html("<%=request.getContextPath()%>" + rv);
 				},
@@ -30,6 +31,10 @@
 				}
 			});
 		
+	}
+	
+	function sendRedirect() {
+		document.location.href = $("#urlResult").html();
 	}
 </script>
 
@@ -45,8 +50,9 @@
             -->
           <li>
             <input id="urlText" name="urlText" type="text" style="ime-mode: inactive" placeholder="입력URL" value="http://"/>
-            <a href="javascript:urlShorten()"> URL Shorten → </a>
+            <input id="urlShortenBtn" name="urlShortenBtn" type="button" onClick="javascript:urlShorten()" value="URL 단축"/> 
             <span id="urlResult" name="urlResult"></span>
+            <input id="sendRedirect" name="sendRedirect" type="button" onClick="javascript:sendRedirect()" value="이동하기" style="display:none"/>
           </li>
         </ul>
       </div>
