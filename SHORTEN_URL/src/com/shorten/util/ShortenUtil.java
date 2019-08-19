@@ -23,7 +23,7 @@ public class ShortenUtil {
 	
 	Logger logger = LoggerFactory.getLogger(ShortenUtil.class);
 	
-	public static String shortenUrlFileDrive = "D:/";
+	public static String shortenUrlFileDrive = "C:/";
 	public static String shortenUrlFileName = "ShortenUrlList.txt";
 	
 	// storage for generated keys
